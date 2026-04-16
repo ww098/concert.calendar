@@ -1,13 +1,20 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 
-import { getAllEvents, searchEvents } from "@/lib/data";
+import { getEventBySlug } from "@/lib/data";
 
-export async function GET(request: NextRequest) {
-  const keyword = request.nextUrl.searchParams.get("q");
-  const events = keyword ? searchEvents(keyword) : getAllEvents();
+type Props = {
+  params: {
+    slug: string;
+  };
+};
 
-  return NextResponse.json({
-    total: events.length,
-    events
-  });
+export async function GET(_: Request, { params }: Props) {
+  const { slug } = params;
+  const event = getEventBySlug(slug);
+
+  if (!event) {
+    return NextResponse.json({ message: "Event not found" }, { status: 404 });
+  }
+
+  return NextResponse.json(event);
 }
