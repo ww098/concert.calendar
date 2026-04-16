@@ -9,7 +9,7 @@ type Props = {
 
 export function EventCard({ event }: Props) {
   return (
-    <article className="event-card">
+    <article className="notice-card">
       <div className="event-card__meta">
         <span className="pill">{event.artist.genre}</span>
         <span className="muted">{event.city}</span>
@@ -31,10 +31,10 @@ export function EventCard({ event }: Props) {
         </div>
       </dl>
       <div className="event-card__actions">
-        <a className="ghost-button" href={event.tickets[0].url} target="_blank" rel="noreferrer">
+        <a className="text-link" href={event.tickets[0].url} target="_blank" rel="noreferrer">
           前往售票
         </a>
-        <Link className="primary-button" href={`/events/${event.slug}`}>
+        <Link className="text-link strong-link" href={`/events/${event.slug}`}>
           查看詳情
         </Link>
       </div>

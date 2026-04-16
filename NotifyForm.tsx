@@ -33,7 +33,7 @@ export function NotifyForm() {
   }
 
   return (
-    <form className="notify-form" onSubmit={handleSubmit}>
+    <form className="content-card notify-form" onSubmit={handleSubmit}>
       <label>
         暱稱
         <input name="name" placeholder="例如：Hana" required />

@@ -9,7 +9,7 @@ type Props = {
 
 export function RankingCard({ event, rank }: Props) {
   return (
-    <article className="ranking-card">
+    <article className="link-card ranking-card">
       <div className="ranking-card__top">
         <span className="ranking-card__index">#{rank}</span>
         <span className="pill pill--soft">{event.artist.fandom}</span>
@@ -20,7 +20,7 @@ export function RankingCard({ event, rank }: Props) {
         <div className="progress-value" style={{ width: `${event.popularityScore}%` }} />
       </div>
       <small>熱度指數 {event.popularityScore}/100</small>
-      <Link className="text-link" href={`/events/${event.slug}`}>
+      <Link className="text-link strong-link" href={`/events/${event.slug}`}>
         查看活動
       </Link>
     </article>
