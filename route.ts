@@ -1,20 +1,12 @@
 import { NextResponse } from "next/server";
 
-import { getEventBySlug } from "@/lib/data";
+import { runMockSync } from "@/lib/scrapers";
 
-type Props = {
-  params: {
-    slug: string;
-  };
-};
+export async function POST() {
+  const result = await runMockSync();
 
-export async function GET(_: Request, { params }: Props) {
-  const { slug } = params;
-  const event = getEventBySlug(slug);
-
-  if (!event) {
-    return NextResponse.json({ message: "Event not found" }, { status: 404 });
-  }
-
-  return NextResponse.json(event);
+  return NextResponse.json({
+    success: true,
+    result
+  });
 }
